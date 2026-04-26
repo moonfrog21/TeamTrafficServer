@@ -1,0 +1,27 @@
+# ==========================================
+# SYSTEM SETUP INSTRUCTIONS (Start Here)
+# ==========================================
+# 1. Install Python:
+#    - Go to https://www.python.org/downloads/
+#    - Download the latest Python 3.x installer.
+#    - CRITICAL: At the bottom of the installer window, check the box that says "Add Python.exe to PATH" before clicking Install.
+#
+# 2. Open your terminal (Windows PowerShell in VS Code).
+#
+# 3. Allow PowerShell to run virtual environment scripts (Run once):
+#    Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+#
+# 4. Create the virtual environment in this folder:
+#    python -m venv .venv
+#
+# 5. Activate the virtual environment:
+#    .venv\Scripts\activate
+#    (You should see "(.venv)" appear at the start of your terminal line).
+#
+# 6. Install these dependencies:
+#    pip install -r requirements.txt
+# ==========================================
+
+Flask
+requests
+Flask-SQLAlchemy

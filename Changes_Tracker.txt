@@ -1,0 +1,12 @@
+
+changes made to Server folder
+
+Implemented view live map feature, but coordinates of users are not yet plotted onto the map
+The logic of main.js was already embedded in dashboard.html so Deepseek suggested that main.js be deleted (which it was) 
+(25 April 2026; 23:10)
+
+Fixed the bug in the dashboard.html code so that so that cars only spawn on left hand side of road
+(26 April 2025; 00:05)
+
+Increased speed of car generation
+

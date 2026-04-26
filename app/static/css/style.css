@@ -1,0 +1,279 @@
+/* =============================================
+   TeamTraffic Dashboard — style.css
+   Dark-mode telemetry UI
+   ============================================= */
+
+/* ---------- Reset & base ---------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg-base:       #0d0f14;
+  --bg-surface:    #141720;
+  --bg-raised:     #1c202e;
+  --bg-hover:      #232840;
+
+  --accent:        #4f8ef7;
+  --accent-glow:   rgba(79, 142, 247, 0.18);
+  --accent-green:  #34d399;
+  --accent-amber:  #fbbf24;
+
+  --text-primary:  #e8ecf4;
+  --text-secondary:#8b95b0;
+  --text-muted:    #50596e;
+
+  --border:        rgba(255,255,255,0.07);
+  --border-accent: rgba(79,142,247,0.35);
+
+  --radius-sm:  6px;
+  --radius-md:  12px;
+  --radius-lg:  18px;
+
+  --font: 'Inter', system-ui, sans-serif;
+  --transition: 0.2s ease;
+}
+
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg-base);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Layout ---------- */
+.page-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem 3rem;
+}
+
+/* ---------- Header ---------- */
+.header {
+  border-bottom: 1px solid var(--border);
+  padding: 1.25rem 0;
+  margin-bottom: 2rem;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.brand-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 12px var(--accent);
+}
+
+.brand-name {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.brand-tag {
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.2rem 0.65rem;
+}
+
+/* Status pill */
+.status-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  transition: var(--transition);
+}
+
+.status-pill.live {
+  border-color: var(--accent-green);
+  color: var(--accent-green);
+}
+
+.status-pill.error {
+  border-color: #f87171;
+  color: #f87171;
+}
+
+/* Pulsing dot */
+.pulse {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  display: inline-block;
+  transition: background var(--transition);
+}
+
+.status-pill.live   .pulse { background: var(--accent-green); animation: ping 1.5s infinite; }
+.status-pill.error  .pulse { background: #f87171; }
+
+@keyframes ping {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(1.4); }
+}
+
+/* ---------- Stats bar ---------- */
+.stats-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.1rem 1.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.stat-card:hover {
+  border-color: var(--border-accent);
+  box-shadow: 0 0 20px var(--accent-glow);
+}
+
+.stat-label {
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.stat-value {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+/* ---------- Table section ---------- */
+.table-section {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.table-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.table-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.table-hint {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+thead tr {
+  background: var(--bg-raised);
+}
+
+thead th {
+  padding: 0.85rem 1.25rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  white-space: nowrap;
+  border-bottom: 1px solid var(--border);
+}
+
+tbody tr {
+  border-bottom: 1px solid var(--border);
+  transition: background var(--transition);
+}
+
+tbody tr:last-child { border-bottom: none; }
+
+tbody tr:hover { background: var(--bg-hover); }
+
+tbody td {
+  padding: 0.85rem 1.25rem;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+/* ID column — dimmed */
+tbody td:first-child { color: var(--text-muted); font-variant-numeric: tabular-nums; }
+
+/* User column — accented */
+tbody td:nth-child(2) { color: var(--accent); font-weight: 500; }
+
+/* Empty / waiting state */
+.empty-row td {
+  text-align: center;
+  padding: 3rem 1.25rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* New-row highlight animation */
+@keyframes rowIn {
+  from { background: var(--accent-glow); }
+  to   { background: transparent; }
+}
+
+tbody tr.new-row { animation: rowIn 1.2s ease-out forwards; }
+
+/* ---------- Footer ---------- */
+.footer {
+  text-align: center;
+  margin-top: 2.5rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
